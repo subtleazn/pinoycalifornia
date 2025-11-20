@@ -2,12 +2,6 @@
 <!DOCTYPE html>
 <html b:layoutsVersion='3' b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr' xmlns:fb='https://www.facebook.com/2008/fbml'>
   <head>
-<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
-<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css/css?family=Droid+Sans' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'/>
 
 
 <b:include data='blog' name='all-head-content'/>
@@ -20,24 +14,34 @@
 
 
     <title>
-      <b:if cond='data:blog.pageType == &quot;item&quot;'>
-        <data:blog.pageName/> | <data:blog.title/>
-      <b:elseif cond='data:blog.pageType == &quot;archive&quot;'/>
-        <data:blog.pageName/> | <data:blog.title/>
-      <b:elseif cond='data:blog.pageType == &quot;index&quot;'/>
-        <data:blog.title/>
-      <b:else/>
+      <b:if cond='data:blog.pageType == &quot;archive&quot;'>
         <data:blog.pageName/>
+        <b:else/>
+        <b:if cond='data:blog.searchLabel'>
+          <data:blog.pageName/> | <data:blog.pageName/>
+          <b:else/>
+          <b:if cond='data:blog.pageType == &quot;index&quot;'>
+            <data:blog.pageTitle/>
+            <b:else/>
+            <b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+              <data:blog.pageName/> | America | Work | Travel | Study | Philippines
+              <b:else/>
+              Page Not Found | <data:blog.title/> 
+            </b:if>
+          </b:if>
+        </b:if>
       </b:if>
     </title>
-    <b:if cond='data:blog.pageType == &quot;item&quot;'>
-        <meta expr:content='data:post.snippet' name='description'/>
-      <b:elseif cond='data:blog.pageType == &quot;archive&quot;'/>
-        <meta expr:content='&quot;Archive for &quot; + data:blog.pageName' name='description'/>
+    <b:if cond='data:blog.metaDescription == &quot;&quot;'>
+      <!-- Blank description -->
       <b:else/>
-        <meta expr:content='data:blog.metaDescription' name='description'/>
-      </b:if>
-    
+      <meta expr:content='data:blog.metaDescription' itemprop='description'/>     
+    </b:if> 
+    <b:if cond='data:blog.metaKeywords == &quot;&quot;'>
+      <!-- Blank keywords -->
+      <b:else/>
+      <meta expr:content='data:blog.metaKeywords' itemprop='keywords'/>     
+    </b:if> 
     <meta content='true' name='MSSmartTagsPreventParsing'/> 
     <meta content='blogger' name='generator'/>
 
@@ -49,23 +53,20 @@
 <meta content='307b3f9a3ca0c8b7' name='yandex-verification'/>
 
 <!-- Facebook OpenGraph -->
-<meta expr:content='data:blog.pageType == &quot;item&quot; ? &quot;article&quot; : &quot;website&quot;' property='og:type'/>
+<meta content='article' property='og:type'/>
 <meta expr:content='data:blog.title' property='og:site_name'/>
-<b:if cond='data:blog.pageType == &quot;item&quot;'>
-  <meta expr:content='data:blog.pageName' property='og:title'/>
-  <meta expr:content='data:post.snippet' property='og:description'/>
-<b:else/>
-  <meta expr:content='data:blog.title' property='og:title'/>
-  <meta expr:content='data:blog.metaDescription' property='og:description'/>
-</b:if>
+<meta expr:content='data:blog.pageName' property='og:title'/>
 <meta expr:content='data:blog.url' property='og:url'/>
-<b:if cond='data:blog.postImageUrl'>
-  <meta expr:content='data:blog.postImageUrl' property='og:image'/>
+<b:if cond='data:blog.metaDescription'>
+<meta expr:content='data:blog.metaDescription' name='description'/>
 <b:else/>
-  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLrt2DFj_-hNNE3VSlL708dMoPqgjAaRDi9tctKWf56zMYwoDFiNh8fLkNqGbxfAqRZEsBchKk0J8heA3epE0A3ka0lcSfG1PNQnbdvloaBOIHJazpg2vkV4mppL-I369FKjk0UxXIDno/s1600/No+Image+Available.png' property='og:image'/>
+<meta expr:content='data:post.snippet' name='description'/>
 </b:if>
+<b:if cond='data:blog.postImageUrl'>
+<meta expr:content='data:blog.postImageUrl' property='og:image'/>
 <meta content='1200' property='og:image:width'/>
 <meta content='630' property='og:image:height'/>
+</b:if>
 <meta content='330598547680533' property='fb:app_id'/>
 <meta content='739140677' property='fb:admins'/>
 <meta content='100000350946926' property='fb:admins'/>
@@ -76,20 +77,6 @@
 <meta content='@californiapinoy' name='twitter:site'/>
 <meta content='@californiapinoy' name='twitter:creator'/>
 <meta expr:content='data:blog.canonicalUrl' name='twitter:url'/>
-<b:if cond='data:blog.pageType == &quot;item&quot;'>
-  <meta expr:content='data:blog.pageName' name='twitter:title'/>
-  <meta expr:content='data:post.snippet' name='twitter:description'/>
-  <b:if cond='data:blog.postImageUrl'>
-    <meta expr:content='data:blog.postImageUrl' name='twitter:image'/>
-  <b:else/>
-    <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLrt2DFj_-hNNE3VSlL708dMoPqgjAaRDi9tctKWf56zMYwoDFiNh8fLkNqGbxfAqRZEsBchKk0J8heA3epE0A3ka0lcSfG1PNQnbdvloaBOIHJazpg2vkV4mppL-I369FKjk0UxXIDno/s1600/No+Image+Available.png' name='twitter:image'/>
-  </b:if>
-<b:else/>
-  <meta expr:content='data:blog.title' name='twitter:title'/>
-  <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
-  <!-- Assuming a default image for non-item pages if available, or omit if not applicable -->
-  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLrt2DFj_-hNNE3VSlL708dMoPqgjAaRDi9tctKWf56zMYwoDFiNh8fLkNqGbxfAqRZEsBchKk0J8heA3epE0A3ka0lcSfG1PNQnbdvloaBOIHJazpg2vkV4mppL-I369FKjk0UxXIDno/s1600/No+Image+Available.png' name='twitter:image'/>
-</b:if>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:
@@ -1281,7 +1268,7 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
   <b:section class='navigation' id='StaticPages' maxwidgets='1'>
     <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='1'>
       <b:widget-settings>
-        <b:widget-setting name='pageListJson'><![CDATA[{"1928679605052883534":{"href":"https://california.pinoyseoul.com/p/contact.html","position":1,"title":"Contact Us"},"3742636642782525968":{"href":"https://california.pinoyseoul.com/p/about.html","position":0,"title":"About PinoyCalifornia.com"}}]]></b:widget-setting>
+        <b:widget-setting name='pageListJson'><![CDATA[{"1928679605052883534":{"href":"https://www.pinoycalifornia.com/p/contact.html","position":1,"title":"Contact Us"},"3742636642782525968":{"href":"https://www.pinoycalifornia.com/p/about.html","position":0,"title":"About PinoyCalifornia.com"}}]]></b:widget-setting>
         <b:widget-setting name='homeTitle'>Home</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
@@ -1920,18 +1907,8 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
 <b:include name='breadcrumb'/>
 </b:if>
       <data:defaultAdStart/>
-<div class='post-outer' itemscope='itemscope' itemtype='https://schema.org/Article'>
-        <b:if cond='data:blog.pageType == &quot;item&quot;'>
-          <meta expr:content='data:post.title' itemprop='headline'/>
-          <meta expr:content='data:post.authorProfileUrl' itemprop='author'/>
-          <meta expr:content='data:post.timestampISO8601' itemprop='datePublished'/>
-          <meta expr:content='data:post.timestampISO8601' itemprop='dateModified'/>
-          <b:if cond='data:post.firstImageUrl'>
-            <meta expr:content='data:post.firstImageUrl' itemprop='image'/>
-          <b:else/>
-            <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLrt2DFj_-hNNE3VSlL708dMoPqgjAaRDi9tctKWf56zMYwoDFiNh8fLkNqGbxfAqRZEsBchKk0J8heA3epE0A3ka0lcSfG1PNQnbdvloaBOIHJazpg2vkV4mppL-I369FKjk0UxXIDno/s1600/No+Image+Available.png' itemprop='image'/>
-          </b:if>
-        </b:if>
+      <b:loop values='data:posts' var='post'>
+        <div class='post-outer'>
         <b:include data='post' name='post'/>
         <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
           <b:include data='post' name='comment_picker'/>
@@ -2021,32 +1998,23 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
 </b:includable>
     <b:includable id='backlinks' var='post'/>
     <b:includable id='breadcrumb'>
-  <b:if cond='data:blog.pageType == &quot;item&quot;'>
-    <div class='breadcrumbs' itemscope='' itemtype='https://schema.org/BreadcrumbList'>
-      <span itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
-        <a expr:href='data:blog.homepageUrl' itemprop='item'>
-          <span itemprop='name'>Home</span>
-        </a>
-        <meta content='1' itemprop='position'/>
-      </span>
-      <b:loop values='data:posts' var='post'>
-        <b:if cond='data:post.labels'>
-          <b:loop values='data:post.labels' var='label'>
-            <span itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
-              <a expr:href='data:label.url' itemprop='item'>
-                <span itemprop='name'><data:label.name/></span>
-              </a>
-              <meta expr:content='data:label.name.count + 1' itemprop='position'/>
-            </span>
-          </b:loop>
-        </b:if>
-        <span itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
-          <span itemprop='name'><data:post.title/></span>
-          <meta expr:content='data:post.labels.count + 2' itemprop='position'/>
-        </span>
+ <b:if cond='data:blog.pageType == &quot;item&quot;'>
+        <div class='breadcrumbs' xmlns:v='https://rdf.data-vocabulary.org/#'>
+    <span typeof='v:Breadcrumb'><a class='bhome' expr:href='data:blog.homepageUrl' property='v:title' rel='v:url'>Home</a></span>
+    <b:loop values='data:posts' var='post'>
+      <b:if cond='data:post.labels'>
+      <b:loop values='data:post.labels' var='label'>
+        <span typeof='v:Breadcrumb'>
+        <a expr:href='data:label.url' property='v:title' rel='v:url'><data:label.name/></a></span>
+        <b:if cond='data:label.isLast != &quot;true&quot;'/>
       </b:loop>
-    </div>
-  </b:if>
+      <b:else/>
+         Unlabelled
+      </b:if>
+        <span><data:post.title/></span>
+    </b:loop>
+  </div>
+</b:if>
 </b:includable>
     <b:includable id='comment-form' var='post'>
   <div class='comment-form'>
