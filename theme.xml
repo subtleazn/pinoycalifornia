@@ -1294,7 +1294,7 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
   <b:section class='navigation' id='StaticPages' maxwidgets='1'>
     <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='1'>
       <b:widget-settings>
-        <b:widget-setting name='pageListJson'><![CDATA[{"1928679605052883534":{"href":"https://www.pinoycalifornia.com/p/contact.html","position":1,"title":"Contact Us"},"3742636642782525968":{"href":"https://www.pinoycalifornia.com/p/about.html","position":0,"title":"About PinoyCalifornia.com"}}]]></b:widget-setting>
+        <b:widget-setting name='pageListJson'><![CDATA[{"1928679605052883534":{"href":"https://california.pinoyseoul.com/p/contact.html","position":1,"title":"Contact Us"},"3742636642782525968":{"href":"https://california.pinoyseoul.com/p/about.html","position":0,"title":"About PinoyCalifornia.com"}}]]></b:widget-setting>
         <b:widget-setting name='homeTitle'>Home</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
