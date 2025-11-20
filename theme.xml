@@ -18,13 +18,13 @@
         <data:blog.pageName/>
         <b:else/>
         <b:if cond='data:blog.searchLabel'>
-          <data:blog.pageName/> | <data:blog.pageName/>
+          <data:blog.searchLabel/> | <data:blog.title/>
           <b:else/>
           <b:if cond='data:blog.pageType == &quot;index&quot;'>
             <data:blog.pageTitle/>
             <b:else/>
             <b:if cond='data:blog.pageType != &quot;error_page&quot;'>
-              <data:blog.pageName/> | America | Work | Travel | Study | Philippines
+              <data:blog.pageName/> | <data:blog.title/>
               <b:else/>
               Page Not Found | <data:blog.title/> 
             </b:if>
@@ -32,16 +32,27 @@
         </b:if>
       </b:if>
     </title>
-    <b:if cond='data:blog.metaDescription == &quot;&quot;'>
-      <!-- Blank description -->
-      <b:else/>
-      <meta expr:content='data:blog.metaDescription' itemprop='description'/>     
-    </b:if> 
-    <b:if cond='data:blog.metaKeywords == &quot;&quot;'>
-      <!-- Blank keywords -->
-      <b:else/>
-      <meta expr:content='data:blog.metaKeywords' itemprop='keywords'/>     
-    </b:if> 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "<data:blog.homepageUrl/>",
+      "name": "<data:blog.title/>",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "<data:blog.searchUrl/>?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <b:if cond='data:blog.metaDescription'>
+      <meta expr:content='data:blog.metaDescription' name='description'/>
+      <meta expr:content='data:blog.metaDescription' itemprop='description'/>
+    <b:else/>
+      <meta expr:content='data:post.snippet' name='description'/>
+      <meta expr:content='data:post.snippet' itemprop='description'/>
+    </b:if>
+
     <meta content='true' name='MSSmartTagsPreventParsing'/> 
     <meta content='blogger' name='generator'/>
 
@@ -58,14 +69,18 @@
 <meta expr:content='data:blog.pageName' property='og:title'/>
 <meta expr:content='data:blog.url' property='og:url'/>
 <b:if cond='data:blog.metaDescription'>
-<meta expr:content='data:blog.metaDescription' name='description'/>
+  <meta expr:content='data:blog.metaDescription' property='og:description'/>
 <b:else/>
-<meta expr:content='data:post.snippet' name='description'/>
+  <meta expr:content='data:post.snippet' property='og:description'/>
 </b:if>
 <b:if cond='data:blog.postImageUrl'>
-<meta expr:content='data:blog.postImageUrl' property='og:image'/>
-<meta content='1200' property='og:image:width'/>
-<meta content='630' property='og:image:height'/>
+  <meta expr:content='data:blog.postImageUrl' property='og:image'/>
+  <meta content='1200' property='og:image:width'/>
+  <meta content='630' property='og:image:height'/>
+<b:else/>
+  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8uYbd-zujCyssyWmDDolOwNkyMsx9CNSFkzd2iIB8_TeMHMYHidpVlA2ei-5bSqjrjIyOx-nwwX8bhz2gYKK7I8389T9Qt1lbFhPy1SuJU0bp96lavnNHUr6IsrDq3JeTMv-xW3oNYDA/s1600/pinoycaliforniafront.jpg' property='og:image'/> <!-- Default image -->
+  <meta content='1200' property='og:image:width'/>
+  <meta content='630' property='og:image:height'/>
 </b:if>
 <meta content='330598547680533' property='fb:app_id'/>
 <meta content='739140677' property='fb:admins'/>
@@ -76,6 +91,17 @@
 <meta content='summary_large_image' name='twitter:card'/>
 <meta content='@californiapinoy' name='twitter:site'/>
 <meta content='@californiapinoy' name='twitter:creator'/>
+<meta expr:content='data:blog.pageName' name='twitter:title'/>
+<b:if cond='data:blog.metaDescription'>
+  <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+<b:else/>
+  <meta expr:content='data:post.snippet' name='twitter:description'/>
+</b:if>
+<b:if cond='data:blog.postImageUrl'>
+  <meta expr:content='data:blog.postImageUrl' name='twitter:image'/>
+<b:else/>
+  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8uYbd-zujCyssyWmDDolOwNkyMsx9CNSFkzd2iIB8_TeMHMYHidpVlA2ei-5bSqjrjIyOx-nwwX8bhz2gYKK7I8389T9Qt1lbFhPy1SuJU0bp96lavnNHUr6IsrDq3JeTMv-xW3oNYDA/s1600/pinoycaliforniafront.jpg' name='twitter:image'/> <!-- Default image -->
+</b:if>
 <meta expr:content='data:blog.canonicalUrl' name='twitter:url'/>
 
 <!-- Google Tag Manager -->
@@ -1406,16 +1432,16 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
       <div id='header-inner'>
         <b:if cond='data:blog.pageType == &quot;index&quot;'> 
                           <h1 itemprop='name'><a expr:href='data:blog.homepageUrl' itemprop='url' style='display: block'> 
-                            <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' itemprop='logo' style='display: block'/><span>Filipinos in America</span></a> 
+                            <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' itemprop='logo' style='display: block'/><span><data:blog.title/></span></a> 
                             </h1>
 <b:elseif cond='data:blog.pageType == &quot;archive&quot;'/>
 <h1 itemprop='name'><a expr:href='data:blog.homepageUrl' itemprop='url' style='display: block'> 
-<img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' itemprop='logo' style='display: block'/><span>Filipinos in America</span></a> 
+<img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' itemprop='logo' style='display: block'/><span><data:blog.title/></span></a> 
 </h1>
 
 <b:else/> 
                                    <h2 itemprop='name'><a expr:href='data:blog.homepageUrl' style='display: block'> 
-                            <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' itemprop='logo' style='display: block'/><span>Filipinos in America</span></a></h2>            </b:if>
+                            <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' itemprop='logo' style='display: block'/><span><data:blog.title/></span></a></h2>            </b:if>
         <!--Show the description-->
         <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
           <b:include name='description'/>
