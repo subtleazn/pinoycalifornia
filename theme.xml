@@ -49,8 +49,13 @@
       <meta expr:content='data:blog.metaDescription' name='description'/>
       <meta expr:content='data:blog.metaDescription' itemprop='description'/>
     <b:else/>
-      <meta expr:content='data:post.snippet' name='description'/>
-      <meta expr:content='data:post.snippet' itemprop='description'/>
+      <b:if cond='data:blog.pageType == &quot;item&quot;'>
+        <meta expr:content='data:post.snippet' name='description'/>
+        <meta expr:content='data:post.snippet' itemprop='description'/>
+      <b:else/>
+        <meta expr:content='data:blog.title' name='description'/>
+        <meta expr:content='data:blog.title' itemprop='description'/>
+      </b:if>
     </b:if>
 
     <meta content='true' name='MSSmartTagsPreventParsing'/> 
