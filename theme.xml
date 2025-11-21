@@ -32,16 +32,16 @@
         </b:if>
       </b:if>
     </title>
-    <script type="application/ld+json">
+    <script type='application/ld+json'>
     {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "<data:blog.homepageUrl/>",
-      "name": "<data:blog.title/>",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "<data:blog.searchUrl/>?q={search_term_string}",
-        "query-input": "required name=search_term_string"
+      &quot;@context&quot;: &quot;https://schema.org&quot;,
+      &quot;@type&quot;: &quot;WebSite&quot;,
+      &quot;url&quot;: &quot;<data:blog.homepageUrl/>&quot;,
+      &quot;name&quot;: &quot;<data:blog.title/>&quot;,
+      &quot;potentialAction&quot;: {
+        &quot;@type&quot;: &quot;SearchAction&quot;,
+        &quot;target&quot;: &quot;<data:blog.searchUrl/>?q={search_term_string}&quot;,
+        &quot;query-input&quot;: &quot;required name=search_term_string&quot;
       }
     }
     </script>
@@ -1294,7 +1294,7 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
   <b:section class='navigation' id='StaticPages' maxwidgets='1'>
     <b:widget id='PageList1' locked='false' title='Pages' type='PageList' version='1'>
       <b:widget-settings>
-        <b:widget-setting name='pageListJson'><![CDATA[{"1928679605052883534":{"href":"https://california.pinoyseoul.com/p/contact.html","position":1,"title":"Contact Us"},"3742636642782525968":{"href":"https://california.pinoyseoul.com/p/about.html","position":0,"title":"About PinoyCalifornia.com"}}]]></b:widget-setting>
+        <b:widget-setting name='pageListJson'><![CDATA[{"1928679605052883534":{"href":"https://california.pinoyseoul.com/p/contact.html","position":1,"title":"Contact Us"},"3742636642782525968":{"href":"https://california.pinoyseoul.com/p/about.html","position":0,"title":"About Pinoy California"}}]]></b:widget-setting>
         <b:widget-setting name='homeTitle'>Home</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
@@ -1506,8 +1506,8 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
         </li>
       <li class='tl-menuRecent' data-label='Events'><a href='/search/label/Events' itemprop='url'><span itemprop='name'>Events & Updates</span></a></li>
 
-      <li class='tl-menuRecent' data-label='Mobile App'><a href='/search/label/Mobile%20App' itemprop='url'><span itemprop='name'>Mobile App</span></a></li>
-        <li class='submenu'><a href='#' itemprop='url'>
+
+
 
 
 
@@ -1527,13 +1527,9 @@ $('.recent-button .tl-recent1').html(RecentTab1);$('.recent-button .tl-recent2')
         </li>
 -->
 
-        <!-- Hot News Right Menu Start -->
-        <li class='submenu choose-cat'><a href='https://map.pinoycalifornia.com/dashboard' itemprop='url'><span itemprop='name'>STORE OWNER LOGIN</span></a>
-        </li>
-        <!-- Hot News Right Menu End -->
 
 
-</a></li></ul>
+</ul>
 </nav>]]></b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
@@ -3566,13 +3562,13 @@ var disqus_url = &quot;<data:post.canonicalUrl/>&quot;;
 <b:section class='tl-brand' id='Branding' maxwidgets='1' showaddelement='no'>
   <b:widget id='Image3' locked='false' title='' type='Image' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7QuO-iyK-X8Gfpo6D4lJv-7P_Msg1zJncvjJQ3IK3dnza0vbL3xVQBVKp8It2aOBk7l4InYEnxr3tzxK24OWl8CkSa_ZPrvCYWkTraNMM79i3TjAPMkGdRtxVxHsmcgl2skyZgvHHJg7r/s1600/android-app-on-google.png</b:widget-setting>
-      <b:widget-setting name='displayHeight'>125</b:widget-setting>
+      <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUx6CVeodR0a9LkrB3RkwLfGE05lFVA83UKhaXtVLTZNRsHuJ_4SD58eNeAx8MjWWQk13v97X5acMPJkmwZkwrxBObIM_ZCXtXPWkkQwbI8Aq7brdEc9en7QevUzUCuc-b_Tku5hCMi18/s280/pinoycalifornia-logo.png</b:widget-setting>
+      <b:widget-setting name='displayHeight'>90</b:widget-setting>
       <b:widget-setting name='sectionWidth'>150</b:widget-setting>
       <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-      <b:widget-setting name='displayWidth'>250</b:widget-setting>
-      <b:widget-setting name='link'>https://play.google.com/store/apps/details?id=com.pinoycalifornia.map</b:widget-setting>
-      <b:widget-setting name='caption'>Pinoy California is a mobile app that locates nearby Pinoy stores and Fil-Am Events to socialize online! Chat with your Asian neighbors without physically meeting them.</b:widget-setting>
+      <b:widget-setting name='displayWidth'>280</b:widget-setting>
+      <b:widget-setting name='link'>https://california.pinoyseoul.com/p/about.html</b:widget-setting>
+      <b:widget-setting name='caption'>Pinoy California is a dynamic platform designed to connect Filipinos in the United States with their roots in the Philippines. It offers a wide range of practical information, news, and cultural features that matter to the Filipino community. </b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
     <b:if cond='data:title != &quot;&quot;'>
@@ -3655,7 +3651,7 @@ var disqus_url = &quot;<data:post.canonicalUrl/>&quot;;
   <b:section class='navigation' id='tl-footer-nav' maxwidgets='1'>
     <b:widget id='PageList2' locked='false' title='Pages' type='PageList' version='1'>
       <b:widget-settings>
-        <b:widget-setting name='pageListJson'><![CDATA[{"link1":{"href":"https://artist.pinoyseoul.com","position":1,"title":"PinoyArtist.com"},"link0":{"href":"https://obraa.pinoyseoul.com","position":0,"title":"OBRAA Website"},"link2":{"href":"https://dance.pinoyseoul.com","position":2,"title":"DancePinoy.com"},"5767854974630361593":{"href":"/p/sitemap.html","position":3,"title":"Site Map"}}]]></b:widget-setting>
+        <b:widget-setting name='pageListJson'><![CDATA[{"link1":{"href":"https://obra.pinoyseoul.com","position":1,"title":"OBRA Inc."},"link0":{"href":"https://obraa.blogspot.com","position":0,"title":"OBRAA.org"},"link2":{"href":"/p/sitemap.html","position":2,"title":"Site Map"}}]]></b:widget-setting>
         <b:widget-setting name='homeTitle'>Home</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
