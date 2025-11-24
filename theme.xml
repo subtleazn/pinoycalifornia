@@ -13,7 +13,26 @@
 <meta content='140196153349424' property='fb:pages'/>
 
 
-        <title><b:include data='blog' name='pageTitle'/></title>    <script type='application/ld+json'>
+    <title>
+      <b:if cond='data:blog.pageType == &quot;archive&quot;'>
+        <data:blog.pageName/>
+        <b:else/>
+        <b:if cond='data:blog.searchLabel'>
+          <data:blog.searchLabel/> | <data:blog.title/>
+          <b:else/>
+          <b:if cond='data:blog.pageType == &quot;index&quot;'>
+            <data:blog.pageTitle/>
+            <b:else/>
+            <b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+              <data:blog.pageName/> | <data:blog.title/>
+              <b:else/>
+              Page Not Found | <data:blog.title/> 
+            </b:if>
+          </b:if>
+        </b:if>
+      </b:if>
+    </title>
+    <script type='application/ld+json'>
     {
       &quot;@context&quot;: &quot;https://schema.org&quot;,
       &quot;@type&quot;: &quot;WebSite&quot;,
@@ -52,7 +71,7 @@
 <!-- Facebook OpenGraph -->
 <meta content='article' property='og:type'/>
 <meta expr:content='data:blog.title' property='og:site_name'/>
-<meta expr:content='data:blog.pageType == &quot;index&quot; ? data:blog.title : data:blog.pageName + &quot; | &quot; + data:blog.title' property='og:title'/>
+<meta expr:content='data:blog.pageName' property='og:title'/>
 <meta expr:content='data:blog.url' property='og:url'/>
 <b:if cond='data:blog.metaDescription'>
   <meta expr:content='data:blog.metaDescription' property='og:description'/>
@@ -77,7 +96,7 @@
 <meta content='summary_large_image' name='twitter:card'/>
 <meta content='@californiapinoy' name='twitter:site'/>
 <meta content='@californiapinoy' name='twitter:creator'/>
-<meta expr:content='data:blog.pageType == &quot;index&quot; ? data:blog.title : data:blog.pageName + &quot; | &quot; + data:blog.title' name='twitter:title'/>
+<meta expr:content='data:blog.pageName' name='twitter:title'/>
 <b:if cond='data:blog.metaDescription'>
   <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
 <b:else/>
@@ -3554,7 +3573,7 @@ var disqus_url = &quot;<data:post.canonicalUrl/>&quot;;
       <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
       <b:widget-setting name='displayWidth'>280</b:widget-setting>
       <b:widget-setting name='link'>https://california.pinoyseoul.com/p/about.html</b:widget-setting>
-      <b:widget-setting name='caption'>Pinoy California is a dynamic platform designed to connect Filipinos in the United States with their roots in the Philippines. It offers a wide range of practical information, news, and cultural features that matter to the Filipino community.</b:widget-setting>
+      <b:widget-setting name='caption'>Pinoy California is a dynamic platform designed to connect Filipinos in the United States with their roots in the Philippines. It offers a wide range of practical information, news, and cultural features that matter to the Filipino community. </b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
     <b:if cond='data:title != &quot;&quot;'>
