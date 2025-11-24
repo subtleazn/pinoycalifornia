@@ -1,7 +1,7 @@
 # Pinoy California Blogger Theme
 
 ## Overview
-This repository contains the Blogger theme for PinoyCalifornia.com. This theme has been updated to improve its Search Engine Optimization (SEO) and social media sharing capabilities.
+This repository contains the Blogger theme for Pinoy California. This theme has been updated to improve its Search Engine Optimization (SEO) and social media sharing capabilities.
 
 ## Author and License
 - **Author:** Nash Ang (PinoySeoul Media Enterprise)
