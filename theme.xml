@@ -3573,7 +3573,7 @@ var disqus_url = &quot;<data:post.canonicalUrl/>&quot;;
       <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
       <b:widget-setting name='displayWidth'>280</b:widget-setting>
       <b:widget-setting name='link'>https://california.pinoyseoul.com/p/about.html</b:widget-setting>
-      <b:widget-setting name='caption'>Pinoy California is a dynamic platform designed to connect Filipinos in the United States with their roots in the Philippines. It offers a wide range of practical information, news, and cultural features that matter to the Filipino community. </b:widget-setting>
+      <b:widget-setting name='caption'>Pinoy California is a dynamic platform designed to connect Filipinos in the United States with their roots in the Philippines. It offers a wide range of practical information, news, and cultural features that matter to the Filipino community.</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
     <b:if cond='data:title != &quot;&quot;'>
