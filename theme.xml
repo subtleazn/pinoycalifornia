@@ -13,25 +13,11 @@
 <meta content='140196153349424' property='fb:pages'/>
 
 
-    <title>
-      <b:if cond='data:blog.pageType == &quot;archive&quot;'>
-        <data:blog.pageName/>
-        <b:else/>
-        <b:if cond='data:blog.searchLabel'>
-          <data:blog.searchLabel/> | <data:blog.title/>
-          <b:else/>
-          <b:if cond='data:blog.pageType == &quot;index&quot;'>
-            <data:blog.pageTitle/>
-            <b:else/>
-            <b:if cond='data:blog.pageType != &quot;error_page&quot;'>
-              <data:blog.pageName/> | <data:blog.title/>
-              <b:else/>
-              Page Not Found | <data:blog.title/> 
-            </b:if>
-          </b:if>
-        </b:if>
-      </b:if>
-    </title>
+    <b:if cond='data:view.isHomepage'>
+      <title><data:blog.title.escaped/></title>
+    <b:else/>
+      <title><data:view.title.escaped/> - <data:blog.title.escaped/></title>
+    </b:if>
     <script type='application/ld+json'>
     {
       &quot;@context&quot;: &quot;https://schema.org&quot;,
